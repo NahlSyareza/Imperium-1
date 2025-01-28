@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield_overlay"
+    }
+  ]
+}

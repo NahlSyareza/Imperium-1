@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "imperium:item/iron_legion_chainmail",
+    "layer1": "imperium:item/iron_legion_chainmail_overlay"
+  }
+}

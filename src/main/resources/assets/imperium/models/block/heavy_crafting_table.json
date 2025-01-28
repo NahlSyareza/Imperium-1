@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"particle": "rome:block/heavy_crafting_table_side",
+		"north": "rome:block/heavy_crafting_table_side",
+		"south": "rome:block/heavy_crafting_table_side",
+		"east": "rome:block/heavy_crafting_table_side",
+		"west": "rome:block/heavy_crafting_table_side",
+		"up": "rome:block/heavy_crafting_table_top",
+		"down": "rome:block/heavy_crafting_table_bottom"
+	}
+}

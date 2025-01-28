@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "imperium:item/colorable_bag",
+	"layer1": "imperium:item/colorable_bag_overlay"
+  }
+}

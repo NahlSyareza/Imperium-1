@@ -1,0 +1,6 @@
+{
+  "parent": "imperium:item/handheld_32",
+  "textures": {
+    "layer0": "imperium:item/iron_legion_spear"
+  }
+}

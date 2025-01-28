@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+	"layer0": "neorome:item/blue_iron_legion_chainmail"
+  }
+}

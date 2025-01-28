@@ -1,0 +1,6 @@
+{
+  "parent": "imperium:item/legion_bow",
+  "textures": {
+    "layer0": "imperium:item/legion_bow_pulling_0"
+  }
+}

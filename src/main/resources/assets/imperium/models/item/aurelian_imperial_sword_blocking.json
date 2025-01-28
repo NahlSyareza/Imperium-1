@@ -1,0 +1,6 @@
+{
+  "parent": "imperium:item/handheld_blocking",
+  "textures": {
+    "layer0": "imperium:item/aurelian_imperial_sword"
+  }
+}

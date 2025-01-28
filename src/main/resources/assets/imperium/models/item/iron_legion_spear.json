@@ -1,0 +1,18 @@
+{
+  "parent": "imperium:item/handheld_32",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "imperium:item/iron_legion_spear_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "imperium:item/iron_legion_spear_gui"
+    },
+    "ground": {
+      "parent": "imperium:item/iron_legion_spear_gui"
+    },
+    "fixed": {
+      "parent": "imperium:item/iron_legion_spear_gui"
+    }
+  }
+}
