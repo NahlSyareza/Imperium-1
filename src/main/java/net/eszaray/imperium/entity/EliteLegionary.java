@@ -2,6 +2,7 @@ package net.eszaray.imperium.entity;
 
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntityType;
@@ -35,7 +36,7 @@ public class EliteLegionary extends Legionary{
         shield.set(DataComponents.DYED_COLOR, new DyedItemColor(color, true));
 
         ItemStack head = new ItemStack(ModItems.IRON_LEGION_HELMET.get());
-        ItemStack chest = new ItemStack(ModItems.IRON_LEGION_SEGMENTPLATE.get());
+        ItemStack chest = random.nextInt(0, 2) < 1 ? new ItemStack(ModItems.IRON_LEGION_SEGMENTPLATE.get()) : new ItemStack(ModItems.IRON_LEGION_CHAINMAIL.get());
         ItemStack legs = new ItemStack(ModItems.IRON_LEGION_GREAVES.get());
         ItemStack feet = new ItemStack(ModItems.IRON_LEGION_BOOTS.get());
 
@@ -49,5 +50,10 @@ public class EliteLegionary extends Legionary{
         this.setItemSlot(EquipmentSlot.HEAD, head);
         this.setItemSlot(EquipmentSlot.LEGS, legs);
         this.setItemSlot(EquipmentSlot.FEET, feet);
+    }
+
+    @Override
+    public Component getName() {
+        return Component.translatable("entity.imperium.elite_legionary");
     }
 }

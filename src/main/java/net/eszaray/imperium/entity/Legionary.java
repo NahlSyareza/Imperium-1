@@ -3,9 +3,12 @@ package net.eszaray.imperium.entity;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,6 +20,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -67,7 +71,7 @@ public class Legionary extends PathfinderMob {
         shield.set(DataComponents.DYED_COLOR, new DyedItemColor(color, true));
 
         ItemStack head = new ItemStack(ModItems.IRON_LEGION_HELMET.get());
-        ItemStack chest = new ItemStack(ModItems.IRON_LEGION_SEGMENTPLATE.get());
+        ItemStack chest = random.nextInt(0, 2) < 1 ? new ItemStack(ModItems.IRON_LEGION_SEGMENTPLATE.get()) : new ItemStack(ModItems.IRON_LEGION_CHAINMAIL.get());
         ItemStack legs = new ItemStack(ModItems.IRON_LEGION_GREAVES.get());
         ItemStack feet = new ItemStack(ModItems.IRON_LEGION_BOOTS.get());
 
@@ -81,6 +85,35 @@ public class Legionary extends PathfinderMob {
         this.setItemSlot(EquipmentSlot.HEAD, head);
         this.setItemSlot(EquipmentSlot.LEGS, legs);
         this.setItemSlot(EquipmentSlot.FEET, feet);
+    }
+
+    @Override
+    public Component getName() {
+        return Component.translatable("entity.imperium.legionary");
+    }
+
+    private int click = 0;
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        Level level = this.level();
+
+        if(!level.isClientSide()) {
+            if(click > 2) {
+                ItemStack item = player.getMainHandItem();
+                if(item.getItem() == Items.STICK && item.getCount() > 10) {
+                    item.shrink(10);
+                    player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Thanks!!"));
+                } else {
+                    player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Bring me 10 sticks!!"));
+                }
+            } else {
+                player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Hello!"));
+            }
+
+            click++;
+        }
+
+        return InteractionResult.SUCCESS;
     }
 
     @Override

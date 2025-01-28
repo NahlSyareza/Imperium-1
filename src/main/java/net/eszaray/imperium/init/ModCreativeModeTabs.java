@@ -20,6 +20,8 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.LEGION_BOW);
 
         output.accept(ModItems.LEGION_SHIELD);
+        output.accept(ModItems.LEGION_ROUND_SHIELD);
+
         output.accept(ModItems.IRON_LEGION_HELMET);
         output.accept(ModItems.IRON_LEGION_SEGMENTPLATE);
         output.accept(ModItems.IRON_LEGION_CHAINMAIL);

@@ -1,5 +1,6 @@
 package net.eszaray.imperium;
 
+import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
 import net.eszaray.imperium.init.ModEntityType;
 import net.eszaray.imperium.entity.client.renderer.LegionaryRenderer;
 import net.eszaray.imperium.init.ModBlockEntityWithoutLevelRenderer;
@@ -7,15 +8,19 @@ import net.eszaray.imperium.init.ModCreativeModeTabs;
 import net.eszaray.imperium.init.ModItemProperties;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.util.FastColor;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -36,7 +41,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 @Mod(Imperium.MODID)
 public class Imperium {
     public static final String MODID = "imperium";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Imperium(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
@@ -73,6 +78,7 @@ public class Imperium {
             EntityRenderers.register(ModEntityType.LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.VETERAN_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
+            EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), NobleCitizenRenderer::new);
         }
 
         @SubscribeEvent
@@ -85,7 +91,7 @@ public class Imperium {
         public static void registerColorHandler(RegisterColorHandlersEvent.Item event) {
             event.register((itemStack, i) -> {
                 return i > 0 ? -1 : DyedItemColor.getOrDefault(itemStack, DyedItemColor.LEATHER_COLOR);
-            }, ModItems.IRON_LEGION_CHAINMAIL.get(), ModItems.IRON_LEGION_SEGMENTPLATE.get(), ModItems.IRON_LEGION_GREAVES.get(), ModItems.LEGION_SHIELD, ModItems.CEREMONIAL_LEGION_GREAVES);
+            }, ModItems.LEGION_ROUND_SHIELD.get(), ModItems.IRON_LEGION_CHAINMAIL.get(), ModItems.IRON_LEGION_SEGMENTPLATE.get(), ModItems.IRON_LEGION_GREAVES.get(), ModItems.LEGION_SHIELD, ModItems.CEREMONIAL_LEGION_GREAVES);
         }
 
         @SubscribeEvent
@@ -95,7 +101,7 @@ public class Imperium {
                 public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                     return ModBlockEntityWithoutLevelRenderer.instance;
                 }
-            }, ModItems.LEGION_SHIELD.get());
+            }, ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
 
             event.registerItem(new IClientItemExtensions() {
                 @Override

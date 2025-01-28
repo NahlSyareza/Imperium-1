@@ -9,11 +9,4 @@ public class LegionArmorItem extends ArmorItem {
         super(material, type, properties);
     }
 
-//    @Override
-//    public boolean isFoil(ItemStack stack) {
-//        if (stack.get(DataComponents.DYED_COLOR) == null && (this.getType() == Type.CHESTPLATE || this.getType() == Type.LEGGINGS)) {
-//            stack.set(DataComponents.DYED_COLOR, new DyedItemColor(11546150, true));
-//        }
-//        return super.isFoil(stack);
-//    }
 }

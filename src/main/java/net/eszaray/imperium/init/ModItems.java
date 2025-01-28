@@ -19,6 +19,7 @@ public class ModItems {
     public static final DeferredItem<Item> COLORABLE_BAG = ITEMS.register("colorable_bag", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> LEGION_SHIELD = ITEMS.register("legion_shield", () -> new LegionShieldItem(new Item.Properties().durability(504)));
+    public static final DeferredItem<Item> LEGION_ROUND_SHIELD = ITEMS.register("legion_round_shield", () -> new LegionShieldItem(new Item.Properties().durability(504)));
     public static final DeferredItem<Item> LEGION_BOW = ITEMS.register("legion_bow", () -> new BowItem(new Item.Properties()));
 
     public static final DeferredItem<Item> IRON_LEGION_HELMET = ITEMS.register("iron_legion_helmet", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(5))));

@@ -2,7 +2,15 @@
   "sources": [
     {
       "type": "single",
-      "resource": "imperium:entity/legion_shield_overlay"
+      "resource": "imperium:entity/legion_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_round_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield/round_base"
     }
   ]
 }

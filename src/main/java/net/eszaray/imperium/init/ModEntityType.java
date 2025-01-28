@@ -3,6 +3,7 @@ package net.eszaray.imperium.init;
 import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.entity.EliteLegionary;
 import net.eszaray.imperium.entity.Legionary;
+import net.eszaray.imperium.entity.NobleCitizen;
 import net.eszaray.imperium.entity.VeteranLegionary;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +19,7 @@ public class ModEntityType {
     public static final Supplier<EntityType<Legionary>> LEGIONARY = ENTITY_TYPE.register("legionary", () -> EntityType.Builder.of(Legionary::new, MobCategory.CREATURE).sized(0.6F, 1.8F).build("legionary"));
     public static final Supplier<EntityType<VeteranLegionary>> VETERAN_LEGIONARY = ENTITY_TYPE.register("veteran_legionary", () -> EntityType.Builder.of(VeteranLegionary::new, MobCategory.CREATURE).sized(0.6F, 1.8F).build("veteran_legionary"));
     public static final Supplier<EntityType<EliteLegionary>> ELITE_LEGIONARY = ENTITY_TYPE.register("elite_legionary", () -> EntityType.Builder.of(EliteLegionary::new, MobCategory.CREATURE).sized(0.6F, 1.8F).build("elite_legionary"));
+    public static final Supplier<EntityType<NobleCitizen>> NOBLE_CITIZEN = ENTITY_TYPE.register("noble_citizen", () -> EntityType.Builder.of(NobleCitizen::new, MobCategory.CREATURE).sized(0.6F, 1.8F).build("noble_citizen"));
 
     public static void register(IEventBus bus) {
         ENTITY_TYPE.register(bus);
