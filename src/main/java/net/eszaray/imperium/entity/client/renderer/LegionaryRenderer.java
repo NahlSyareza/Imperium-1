@@ -2,6 +2,7 @@ package net.eszaray.imperium.entity.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.eszaray.imperium.Imperium;
+import net.eszaray.imperium.entity.Auxiliary;
 import net.eszaray.imperium.entity.EliteLegionary;
 import net.eszaray.imperium.entity.Legionary;
 import net.eszaray.imperium.entity.VeteranLegionary;
@@ -35,7 +36,9 @@ public class LegionaryRenderer extends LivingEntityRenderer<Legionary, PlayerMod
             return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/veteran_legionary.png");
         } else if (legionary instanceof EliteLegionary) {
             return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/elite_legionary.png");
-        } else {
+        } else if (legionary instanceof Auxiliary) {
+            return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/auxiliary.png");
+        }else {
             return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/legionary.png");
         }
     }

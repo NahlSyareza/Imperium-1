@@ -11,6 +11,10 @@
     {
       "type": "single",
       "resource": "imperium:entity/legion_shield/round_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield/base"
     }
   ]
 }

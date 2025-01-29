@@ -12,8 +12,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Imperium.MODID);
 
-    public static final DeferredItem<Item> IRON_LEGION_SWORD = ITEMS.register("iron_legion_sword", () -> new LegionSwordItem(ModTiers.IRON_LEGION, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.IRON_LEGION, 3, -1.0F))));
-    public static final DeferredItem<Item> IRON_LEGION_SPEAR = ITEMS.register("iron_legion_spear", () -> new LegionSpearItem(ModTiers.IRON_LEGION, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.IRON_LEGION, 4, -3.0F))));
+    public static final DeferredItem<Item> IRON_LEGION_SWORD = ITEMS.register("iron_legion_sword", () -> new LegionSwordItem(ModTiers.IRON_LEGION, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.IRON_LEGION, 4, -1.0F))));
+    public static final DeferredItem<Item> IRON_LEGION_SPEAR = ITEMS.register("iron_legion_spear", () -> new LegionSpearItem(ModTiers.IRON_LEGION, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.IRON_LEGION, 3, -3.0F))));
     public static final DeferredItem<Item> CEREMONIAL_LEGION_SWORD = ITEMS.register("ceremonial_legion_sword", () -> new LegionSwordItem(ModTiers.IRON_LEGION, new Item.Properties().attributes(SwordItem.createAttributes(ModTiers.IRON_LEGION, 3, -1.2F))));
 
     public static final DeferredItem<Item> COLORABLE_BAG = ITEMS.register("colorable_bag", () -> new Item(new Item.Properties()));

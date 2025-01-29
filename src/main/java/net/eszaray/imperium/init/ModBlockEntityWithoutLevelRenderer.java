@@ -9,7 +9,6 @@ import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.Material;
@@ -42,25 +41,25 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
         if (stack.is(ModItems.LEGION_SHIELD)) {
             poseStack.pushPose();
             poseStack.scale(1.0F, -1.0F, -1.0F);
-            Material overlay = ModModelBakery.LEGION_SHIELD_BASE;
-            Material base = Sheets.SHIELD_BASE;
-            VertexConsumer vertexconsumer = overlay.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionShieldModel.renderType(overlay.atlasLocation()), true, stack.hasFoil()));
+            Material base = ModModelBakery.LEGION_SHIELD_BASE;
+            Material overlay = ModModelBakery.BASE;
+            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
             this.legionShieldModel.handle().render(poseStack, vertexconsumer, packedLight, packedOverlay);
 
-            this.legionShieldModel.plate().render(poseStack, base.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
-            this.legionShieldModel.plate().render(poseStack, overlay.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
+            this.legionShieldModel.plate().render(poseStack, overlay.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
+            this.legionShieldModel.plate().render(poseStack, base.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
 
             poseStack.popPose();
         } else if (stack.is(ModItems.LEGION_ROUND_SHIELD)) {
             poseStack.pushPose();
             poseStack.scale(1.0F, -1.0F, -1.0F);
-            Material BASE = ModModelBakery.LEGION_ROUND_SHIELD_BASE;
-            Material COLOR = ModModelBakery.ROUND_BASE;
-            VertexConsumer vertexconsumer = BASE.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionRoundShieldModel.renderType(BASE.atlasLocation()), true, stack.hasFoil()));
+            Material base = ModModelBakery.LEGION_ROUND_SHIELD_BASE;
+            Material overlay = ModModelBakery.ROUND_BASE;
+            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionRoundShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
             this.legionRoundShieldModel.handle().render(poseStack, vertexconsumer, packedLight, packedOverlay);
 
-            this.legionRoundShieldModel.plate().render(poseStack, COLOR.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
-            this.legionRoundShieldModel.plate().render(poseStack, BASE.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
+            this.legionRoundShieldModel.plate().render(poseStack, overlay.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
+            this.legionRoundShieldModel.plate().render(poseStack, base.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
 
             poseStack.popPose();
         }

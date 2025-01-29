@@ -20,7 +20,7 @@ public class VeteranLegionary extends Legionary {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return PathfinderMob.createLivingAttributes().add(Attributes.MAX_HEALTH, 50.0D).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.FOLLOW_RANGE, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D).add(Attributes.ENTITY_INTERACTION_RANGE, 10.0D);
+        return PathfinderMob.createLivingAttributes().add(Attributes.MAX_HEALTH, 50.0D).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.FOLLOW_RANGE, 24.0D).add(Attributes.ATTACK_DAMAGE, 5.0D);
     }
 
     @Override
@@ -50,10 +50,5 @@ public class VeteranLegionary extends Legionary {
         this.setItemSlot(EquipmentSlot.HEAD, head);
         this.setItemSlot(EquipmentSlot.LEGS, legs);
         this.setItemSlot(EquipmentSlot.FEET, feet);
-    }
-
-    @Override
-    public Component getName() {
-        return Component.translatable("entity.imperium.veteran_legionary");
     }
 }

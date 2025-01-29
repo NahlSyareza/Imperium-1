@@ -1,14 +1,15 @@
 package net.eszaray.imperium.entity;
 
+import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -47,7 +48,7 @@ public class Legionary extends PathfinderMob {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return PathfinderMob.createLivingAttributes().add(Attributes.MAX_HEALTH, 25.0).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.FOLLOW_RANGE, 24.0D).add(Attributes.ATTACK_DAMAGE, 1.0D).add(Attributes.ENTITY_INTERACTION_RANGE, 10.0D);
+        return PathfinderMob.createLivingAttributes().add(Attributes.MAX_HEALTH, 25.0).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.FOLLOW_RANGE, 24.0D).add(Attributes.ATTACK_DAMAGE, 1.0D);
     }
 
     @Nullable
@@ -88,35 +89,6 @@ public class Legionary extends PathfinderMob {
     }
 
     @Override
-    public Component getName() {
-        return Component.translatable("entity.imperium.legionary");
-    }
-
-    private int click = 0;
-    @Override
-    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-        Level level = this.level();
-
-        if(!level.isClientSide()) {
-            if(click > 2) {
-                ItemStack item = player.getMainHandItem();
-                if(item.getItem() == Items.STICK && item.getCount() > 10) {
-                    item.shrink(10);
-                    player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Thanks!!"));
-                } else {
-                    player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Bring me 10 sticks!!"));
-                }
-            } else {
-                player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + "Hello!"));
-            }
-
-            click++;
-        }
-
-        return InteractionResult.SUCCESS;
-    }
-
-    @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         if (this.isInWater()) {
             this.waterSwimSound();
@@ -142,14 +114,17 @@ public class Legionary extends PathfinderMob {
         super.aiStep();
         this.updateSwingTime();
 
-//         Switch target to the last target available
-//        if(this.getLastHurtMob() != null) {
-//            this.setTarget(this.getLastHurtMob());
-//        }
-    }
+        if(!this.level().isClientSide()){
+//            if (this.getTarget() != null) {
+//                this.startUsingItem(InteractionHand.OFF_HAND);
+//            } else {
+//                this.stopUsingItem();
+//            }
 
-    @Override
-    public boolean canAttack(LivingEntity target) {
-        return super.canAttack(target);
+            //         Switch target to the last target available
+            if(this.getLastHurtMob() != null) {
+                this.setTarget(this.getLastHurtMob());
+            }
+        }
     }
 }

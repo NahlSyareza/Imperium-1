@@ -8,6 +8,6 @@ import net.minecraft.resources.ResourceLocation;
 public class ModModelBakery {
     public static final Material LEGION_SHIELD_BASE = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Imperium.MODID,"entity/legion_shield_base"));
     public static final Material LEGION_ROUND_SHIELD_BASE = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "entity/legion_round_shield_base"));
+    public static final Material BASE = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "entity/legion_shield/base"));
     public static final Material ROUND_BASE = new Material(Sheets.SHIELD_SHEET, ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "entity/legion_shield/round_base"));
-
 }

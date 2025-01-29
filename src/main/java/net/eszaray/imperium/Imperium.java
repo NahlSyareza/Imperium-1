@@ -79,6 +79,7 @@ public class Imperium {
             EntityRenderers.register(ModEntityType.VETERAN_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), NobleCitizenRenderer::new);
+            EntityRenderers.register(ModEntityType.AUXILIARY.get(), context -> new LegionaryRenderer(context, false));
         }
 
         @SubscribeEvent

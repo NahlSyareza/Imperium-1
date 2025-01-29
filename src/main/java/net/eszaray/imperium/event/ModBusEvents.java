@@ -1,13 +1,10 @@
 package net.eszaray.imperium.event;
 
 import net.eszaray.imperium.Imperium;
-import net.eszaray.imperium.entity.EliteLegionary;
-import net.eszaray.imperium.entity.Legionary;
-import net.eszaray.imperium.entity.NobleCitizen;
+import net.eszaray.imperium.entity.*;
 import net.eszaray.imperium.entity.client.model.LegionRoundShieldModel;
 import net.eszaray.imperium.entity.client.model.LegionShieldModel;
 import net.eszaray.imperium.init.ModEntityType;
-import net.eszaray.imperium.entity.VeteranLegionary;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -28,5 +25,6 @@ public class ModBusEvents {
         event.put(ModEntityType.VETERAN_LEGIONARY.get(), VeteranLegionary.createAttributes().build());
         event.put(ModEntityType.ELITE_LEGIONARY.get(), EliteLegionary.createAttributes().build());
         event.put(ModEntityType.NOBLE_CITIZEN.get(), NobleCitizen.createAttributes().build());
+        event.put(ModEntityType.AUXILIARY.get(), Auxiliary.createAttributes().build());
     }
 }
