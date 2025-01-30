@@ -7,6 +7,7 @@ public class ModItemProperties {
     public static void addCustomItemProperties() {
         ItemProperties.register(ModItems.LEGION_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), (itemstack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemstack ? 1.0F : 0.0F);
         ItemProperties.register(ModItems.LEGION_ROUND_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), (itemstack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemstack ? 1.0F : 0.0F);
+        ItemProperties.register(ModItems.TRIBAL_SHIELD.get(), ResourceLocation.withDefaultNamespace("blocking"), (itemstack, clientLevel, livingEntity, i) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == itemstack ? 1.0F : 0.0F);
         ItemProperties.register(ModItems.LEGION_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemstack, clientLevel, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;

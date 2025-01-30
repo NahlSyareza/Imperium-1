@@ -4,6 +4,7 @@ import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.entity.*;
 import net.eszaray.imperium.entity.client.model.LegionRoundShieldModel;
 import net.eszaray.imperium.entity.client.model.LegionShieldModel;
+import net.eszaray.imperium.entity.client.model.TribalShieldModel;
 import net.eszaray.imperium.init.ModEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -17,6 +18,7 @@ public class ModBusEvents {
     public static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(LegionShieldModel.LAYER_LOCATION, LegionShieldModel::createLayer);
         event.registerLayerDefinition(LegionRoundShieldModel.LAYER_LOCATION, LegionRoundShieldModel::createLayer);
+        event.registerLayerDefinition(TribalShieldModel.LAYER_LOCATION, TribalShieldModel::createLayer);
     }
 
     @SubscribeEvent
@@ -26,5 +28,7 @@ public class ModBusEvents {
         event.put(ModEntityType.ELITE_LEGIONARY.get(), EliteLegionary.createAttributes().build());
         event.put(ModEntityType.NOBLE_CITIZEN.get(), NobleCitizen.createAttributes().build());
         event.put(ModEntityType.AUXILIARY.get(), Auxiliary.createAttributes().build());
+        event.put(ModEntityType.CHIEFTAIN.get(), Chieftain.createAttributes().build());
+        event.put(ModEntityType.TRIBESMAN.get(), Tribesman.createAttributes().build());
     }
 }

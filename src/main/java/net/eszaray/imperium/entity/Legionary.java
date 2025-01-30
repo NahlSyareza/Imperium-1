@@ -4,8 +4,12 @@ import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,7 +32,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class Legionary extends PathfinderMob {
+public class Legionary extends PathfinderMob implements Roman {
     public Legionary(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
@@ -40,7 +44,7 @@ public class Legionary extends PathfinderMob {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25F, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 1.25F, 32.0F));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, false, false, (entity) -> {
-            return entity instanceof Enemy && !(entity instanceof Creeper) && !(entity instanceof EnderMan) && !(entity instanceof Piglin);
+            return entity instanceof Enemy && !(entity instanceof Creeper) && !(entity instanceof EnderMan) && !(entity instanceof Piglin) || entity instanceof Gallic;
         }));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0F));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
@@ -59,6 +63,8 @@ public class Legionary extends PathfinderMob {
 
         return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
     }
+
+//    private final ServerBossEvent serverBossEvent = new ServerBossEvent(this.getName(), BossEvent.BossBarColor.PURPLE, BossEvent.BossBarOverlay.PROGRESS);
 
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
@@ -89,6 +95,11 @@ public class Legionary extends PathfinderMob {
     }
 
     @Override
+    public Component getName() {
+        return Component.translatable("entity.imperium.legionary");
+    }
+
+    @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         if (this.isInWater()) {
             this.waterSwimSound();
@@ -109,12 +120,26 @@ public class Legionary extends PathfinderMob {
 
     }
 
+//    @Override
+//    public void startSeenByPlayer(ServerPlayer serverPlayer) {
+//        super.startSeenByPlayer(serverPlayer);
+//        this.serverBossEvent.addPlayer(serverPlayer);
+//    }
+//
+//    @Override
+//    public void stopSeenByPlayer(ServerPlayer serverPlayer) {
+//        super.stopSeenByPlayer(serverPlayer);
+//        this.serverBossEvent.removePlayer(serverPlayer);
+//    }
+
     @Override
     public void aiStep() {
         super.aiStep();
         this.updateSwingTime();
 
-        if(!this.level().isClientSide()){
+//        this.serverBossEvent.setProgress(this.getHealth() / this.getMaxHealth());
+
+        if (!this.level().isClientSide()) {
 //            if (this.getTarget() != null) {
 //                this.startUsingItem(InteractionHand.OFF_HAND);
 //            } else {
@@ -122,7 +147,7 @@ public class Legionary extends PathfinderMob {
 //            }
 
             //         Switch target to the last target available
-            if(this.getLastHurtMob() != null) {
+            if (this.getLastHurtMob() != null) {
                 this.setTarget(this.getLastHurtMob());
             }
         }

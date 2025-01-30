@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.Level;
 
-public class Praetorian extends VeteranLegionary{
+public class Praetorian extends VeteranLegionary implements Roman {
     public Praetorian(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }

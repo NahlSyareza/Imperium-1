@@ -15,6 +15,10 @@
     {
       "type": "single",
       "resource": "imperium:entity/legion_shield/base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/tribal_shield_base"
     }
   ]
 }

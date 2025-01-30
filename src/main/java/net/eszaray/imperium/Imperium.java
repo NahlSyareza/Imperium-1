@@ -1,30 +1,17 @@
 package net.eszaray.imperium;
 
-import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
-import net.eszaray.imperium.init.ModEntityType;
+import com.mojang.logging.LogUtils;
+import net.eszaray.imperium.entity.client.renderer.ChieftainRenderer;
 import net.eszaray.imperium.entity.client.renderer.LegionaryRenderer;
-import net.eszaray.imperium.init.ModBlockEntityWithoutLevelRenderer;
-import net.eszaray.imperium.init.ModCreativeModeTabs;
-import net.eszaray.imperium.init.ModItemProperties;
-import net.eszaray.imperium.init.ModItems;
+import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
+import net.eszaray.imperium.entity.client.renderer.TribesmanRenderer;
+import net.eszaray.imperium.init.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.util.FastColor;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
-import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
-import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -34,9 +21,14 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import org.slf4j.Logger;
 
 @Mod(Imperium.MODID)
 public class Imperium {
@@ -78,8 +70,10 @@ public class Imperium {
             EntityRenderers.register(ModEntityType.LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.VETERAN_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
-            EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), NobleCitizenRenderer::new);
+            EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), context -> new NobleCitizenRenderer(context, false));
             EntityRenderers.register(ModEntityType.AUXILIARY.get(), context -> new LegionaryRenderer(context, false));
+            EntityRenderers.register(ModEntityType.CHIEFTAIN.get(), context -> new ChieftainRenderer(context, false));
+            EntityRenderers.register(ModEntityType.TRIBESMAN.get(), context -> new TribesmanRenderer(context, false));
         }
 
         @SubscribeEvent
@@ -102,7 +96,7 @@ public class Imperium {
                 public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                     return ModBlockEntityWithoutLevelRenderer.instance;
                 }
-            }, ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
+            }, ModItems.TRIBAL_SHIELD.get(), ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
 
             event.registerItem(new IClientItemExtensions() {
                 @Override

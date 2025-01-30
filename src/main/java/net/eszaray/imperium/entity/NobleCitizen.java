@@ -18,13 +18,19 @@ import net.minecraft.world.level.Level;
 import java.util.HashMap;
 
 public class NobleCitizen extends PathfinderMob {
-    private HashMap<Integer, DialogEvent> dialogEvent = new HashMap<>();
+    private final HashMap<Integer, DialogEvent> dialogEvent;
 
     public NobleCitizen(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
-        dialogEvent.put(0, new DialogEvent("Ah hello there!"));
-        dialogEvent.put(1, new DialogEvent("Greetings, my name is Accius"));
-        dialogEvent.put(2, new DialogEvent("I need you to bring me an Iron Ingot. I need it for something", true));
+        this.dialogEvent = new HashMap<>();
+        initializeDialog(dialogEvent);
+    }
+
+    private void initializeDialog(HashMap<Integer, DialogEvent> map)
+    {
+        map.put(0, new DialogEvent("Ah hello there!"));
+        map.put(1, new DialogEvent("Greetings, my name is Accius"));
+        map.put(2, new DialogEvent("I need you to bring me an Iron Ingot. I need it for something", true));
     }
 
     @Override
@@ -46,13 +52,13 @@ public class NobleCitizen extends PathfinderMob {
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         Level level = this.level();
 
-        if(!level.isClientSide()) {
+        if (!level.isClientSide()) {
             String dialog = dialogEvent.get(sequence) != null ? dialogEvent.get(sequence).getDialog() : "You shouldn't be here....";
             player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + dialog));
 
             sequence++;
 
-            if(sequence >= dialogEvent.size()) {
+            if (sequence >= dialogEvent.size()) {
                 sequence = 0;
             }
         }

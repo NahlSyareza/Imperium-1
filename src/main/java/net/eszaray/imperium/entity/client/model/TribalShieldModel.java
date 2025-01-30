@@ -1,29 +1,28 @@
 package net.eszaray.imperium.entity.client.model;
 
-// Made with Blockbench 4.12.2
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
-
-
+import com.mojang.blaze3d.Blaze3D;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.eszaray.imperium.Imperium;
+import net.minecraft.ResourceLocationException;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 
-public class LegionRoundShieldModel extends Model {
-    // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "legion_round_shield"), "main");
-    private final ModelPart root;
+public class TribalShieldModel extends Model {
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "tribal_shield"), "main");
     private final ModelPart plate;
     private final ModelPart handle;
+    private final ModelPart root;
 
-    public LegionRoundShieldModel(ModelPart root) {
+    public TribalShieldModel(ModelPart root) {
         super(RenderType::entitySolid);
         this.root = root;
         this.plate = root.getChild("plate");
@@ -34,23 +33,22 @@ public class LegionRoundShieldModel extends Model {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        partdefinition.addOrReplaceChild("plate", CubeListBuilder.create().texOffs(0, 0).addBox(-7.0F, -7.0F, -2.0F, 14.0F, 14.0F, 1.0F), PartPose.ZERO);
-        partdefinition.addOrReplaceChild("handle", CubeListBuilder.create().texOffs(30, 0).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), PartPose.ZERO);
+        partdefinition.addOrReplaceChild("plate", CubeListBuilder.create().texOffs(0, 5).addBox(-6.0F, -7.0F, -2.0F, 12.0F, 14.0F, 1.0F).texOffs(1, 0).addBox(-5.0F, -11.0F, -2.0F, 10.0F, 4.0F, 1.0F).texOffs(1, 20).addBox(-5.0F, 7.0F, -2.0F, 10.0F, 4.0F, 1.0F), PartPose.ZERO);
+        partdefinition.addOrReplaceChild("handle", CubeListBuilder.create().texOffs(26, 0).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), PartPose.ZERO);
 
         return LayerDefinition.create(meshdefinition, 64, 64);
     }
 
-    public ModelPart plate() {
-        return this.plate;
+    public ModelPart handle() {
+        return handle;
     }
 
-    public ModelPart handle() {
-        return this.handle;
+    public ModelPart plate() {
+        return plate;
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int i1, int i2) {
-//        this.root.render(poseStack, vertexConsumer, i, i1, i2);
         this.plate.render(poseStack, vertexConsumer, i, i1, i2);
         this.handle.render(poseStack, vertexConsumer, i, i1, i2);
     }

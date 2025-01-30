@@ -19,7 +19,7 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
 public class LegionSwordItem extends SwordItem {
-    public static final AttributeModifier REACH = new AttributeModifier(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "sword_range"), -0.5D, AttributeModifier.Operation.ADD_VALUE);
+    public static final AttributeModifier REACH = new AttributeModifier(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "sword_range"), -1.0D, AttributeModifier.Operation.ADD_VALUE);
 
     public LegionSwordItem(Tier tier, Properties properties) {
         super(tier, properties);

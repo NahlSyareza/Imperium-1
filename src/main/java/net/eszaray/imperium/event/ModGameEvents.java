@@ -1,17 +1,25 @@
 package net.eszaray.imperium.event;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import net.eszaray.imperium.Imperium;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RenderLivingEvent;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 @EventBusSubscriber(modid = Imperium.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ModGameEvents {
+    public static PoseStack pStack;
+    public static MultiBufferSource mbSource;
+
     @SubscribeEvent
-    public static void onRenderLivingEvent(RenderPlayerEvent.Pre event) {
+    public static void onRenderLivingEvent(RenderLivingEvent.Post event) {
+        pStack = event.getPoseStack();
+        mbSource = event.getMultiBufferSource();
     }
 
     @SubscribeEvent
