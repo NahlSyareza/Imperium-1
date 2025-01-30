@@ -5,6 +5,7 @@ import net.eszaray.imperium.entity.client.model.SimpleArmorModel;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -42,6 +43,15 @@ public class ModCustomArmorModel {
                 SimpleArmorModel armorModel = new SimpleArmorModel(new ModelPart(Collections.emptyList(), map));
 
                 return armorModel;
+            }
+
+            @Override
+            public void setupModelAnimations(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, Model model, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+                if(model instanceof SimpleArmorModel<?>) {
+                    SimpleArmorModel model1 = (SimpleArmorModel) model;
+                    model1.head().xRot = 10.0F;
+                    Imperium.LOGGER.info("Here");
+                }
             }
         }, ModItems.SONNE_HELMET.get());
 
