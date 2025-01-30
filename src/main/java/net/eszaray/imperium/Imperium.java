@@ -1,10 +1,7 @@
 package net.eszaray.imperium;
 
 import com.mojang.logging.LogUtils;
-import net.eszaray.imperium.entity.client.renderer.LegionaryRenderer;
-import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
-import net.eszaray.imperium.entity.client.renderer.TribesmanChieftainRenderer;
-import net.eszaray.imperium.entity.client.renderer.TribesmanRenderer;
+import net.eszaray.imperium.entity.client.renderer.*;
 import net.eszaray.imperium.init.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -71,10 +68,10 @@ public class Imperium {
             ModItemProperties.addCustomItemProperties();
 
             EntityRenderers.register(ModEntityType.LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
-            EntityRenderers.register(ModEntityType.VETERAN_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
-            EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
+            EntityRenderers.register(ModEntityType.VETERAN_LEGIONARY.get(), context -> new VeteranLegionaryRenderer(context, false));
+            EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new EliteLegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), context -> new NobleCitizenRenderer(context, false));
-            EntityRenderers.register(ModEntityType.AUXILIARY.get(), context -> new LegionaryRenderer(context, false));
+            EntityRenderers.register(ModEntityType.AUXILIARY.get(), context -> new AuxiliaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.TRIBESMAN_CHIEFTAIN.get(), context -> new TribesmanChieftainRenderer(context, false));
             EntityRenderers.register(ModEntityType.TRIBESMAN.get(), context -> new TribesmanRenderer(context, false));
         }
