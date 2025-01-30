@@ -3,6 +3,7 @@ package net.eszaray.imperium.entity;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
@@ -66,5 +67,10 @@ public class Auxiliary extends Legionary{
         this.setItemSlot(EquipmentSlot.HEAD, head);
         this.setItemSlot(EquipmentSlot.LEGS, legs);
         this.setItemSlot(EquipmentSlot.FEET, feet);
+    }
+
+    @Override
+    public Component getName() {
+        return Component.translatable("entity.imperium.auxiliary");
     }
 }

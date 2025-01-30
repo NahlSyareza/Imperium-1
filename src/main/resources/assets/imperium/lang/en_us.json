@@ -7,11 +7,16 @@
   "item.imperium.aurelian_imperial_sword": "Aurelian's Imperial Sword",
   "item.imperium.flavian_imperial_sword": "Flavian's Imperial Sword",
 
+  "item.imperium.eagle_standard": "Eagle Standard",
+
   "item.imperium.reinforced_iron_ingot": "Reinforced Iron Ingot",
   "item.imperium.iron_legion_sword": "Iron Legion Sword",
   "item.imperium.iron_legion_spear": "Iron Legion Spear",
+  "item.imperium.iron_tribal_sword": "Iron Tribal Sword",
+  "item.imperium.tribal_shield": "Tribal Shield",
   "item.imperium.legion_bow": "Legion Bow",
   "item.imperium.legion_shield": "Legion Shield",
+  "item.imperium.legion_round_shield": "Legion Round Shield",
   "item.imperium.iron_legion_helmet": "Iron Legion Helmet",
   "item.imperium.iron_legion_segmentplate": "Iron Legion Segmentplate",
   "item.imperium.iron_legion_greaves": "Iron Legion Greaves",
@@ -31,6 +36,7 @@
   "item.imperium.arcadius_spawn_egg": "Arcadius Spawn Egg",
   "item.imperium.aetius_spawn_egg": "Aetius Spawn Egg",
 
+  "entity.imperium.auxiliary": "Auxiliary",
   "entity.imperium.legionary": "Legionary",
   "entity.imperium.veteran_legionary": "Veteran Legionary",
   "entity.imperium.elite_legionary": "Elite Legionary",

@@ -47,6 +47,15 @@ public class ModArmorMaterials {
             }), 16, SoundEvents.ARMOR_EQUIP_IRON, 2.0F, 0.1F, () -> Ingredient.of(Items.DIAMOND)
             , List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "ceremonial_legion"), "", true), new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "ceremonial_legion"), "_overlay", false)));
 
+    public static final Holder<ArmorMaterial> SONNE = register("sonne", Util.make(new EnumMap<>(ArmorItem.Type.class), typeIntegerEnumMap -> {
+                typeIntegerEnumMap.put(ArmorItem.Type.HELMET, 5);
+                typeIntegerEnumMap.put(ArmorItem.Type.CHESTPLATE, 5);
+                typeIntegerEnumMap.put(ArmorItem.Type.LEGGINGS, 5);
+                typeIntegerEnumMap.put(ArmorItem.Type.BOOTS, 5);
+                typeIntegerEnumMap.put(ArmorItem.Type.BODY, 5);
+            }), 16, SoundEvents.ARMOR_EQUIP_IRON, 2.0F, 0.1F,
+            () -> Ingredient.of(Items.IRON_INGOT));
+
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection, int enchantability, Holder<SoundEvent> equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> ingredient) {
         ResourceLocation location = ResourceLocation.fromNamespaceAndPath(Imperium.MODID, name);

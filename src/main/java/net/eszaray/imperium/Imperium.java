@@ -1,15 +1,26 @@
 package net.eszaray.imperium;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
-import net.eszaray.imperium.entity.client.renderer.ChieftainRenderer;
+import net.eszaray.imperium.entity.client.model.SimpleArmorModel;
+import net.eszaray.imperium.entity.client.renderer.TribesmanChieftainRenderer;
 import net.eszaray.imperium.entity.client.renderer.LegionaryRenderer;
 import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
 import net.eszaray.imperium.entity.client.renderer.TribesmanRenderer;
 import net.eszaray.imperium.init.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.util.FastColor;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.api.distmarker.Dist;
@@ -29,6 +40,9 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
+
+import java.util.Collections;
+import java.util.Map;
 
 @Mod(Imperium.MODID)
 public class Imperium {
@@ -63,6 +77,8 @@ public class Imperium {
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+        private static ModBlockEntityWithoutLevelRenderer customRenderer;
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
@@ -72,14 +88,15 @@ public class Imperium {
             EntityRenderers.register(ModEntityType.ELITE_LEGIONARY.get(), context -> new LegionaryRenderer(context, false));
             EntityRenderers.register(ModEntityType.NOBLE_CITIZEN.get(), context -> new NobleCitizenRenderer(context, false));
             EntityRenderers.register(ModEntityType.AUXILIARY.get(), context -> new LegionaryRenderer(context, false));
-            EntityRenderers.register(ModEntityType.CHIEFTAIN.get(), context -> new ChieftainRenderer(context, false));
+            EntityRenderers.register(ModEntityType.TRIBESMAN_CHIEFTAIN.get(), context -> new TribesmanChieftainRenderer(context, false));
             EntityRenderers.register(ModEntityType.TRIBESMAN.get(), context -> new TribesmanRenderer(context, false));
         }
 
         @SubscribeEvent
         public static void onRegisterReloadListener(RegisterClientReloadListenersEvent event) {
-            ModBlockEntityWithoutLevelRenderer.instance = new ModBlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
-            event.registerReloadListener(ModBlockEntityWithoutLevelRenderer.instance);
+            customRenderer = new ModBlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+//            ModBlockEntityWithoutLevelRenderer.instance = new ModBlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+            event.registerReloadListener(customRenderer);
         }
 
         @SubscribeEvent
@@ -94,7 +111,8 @@ public class Imperium {
             event.registerItem(new IClientItemExtensions() {
                 @Override
                 public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-                    return ModBlockEntityWithoutLevelRenderer.instance;
+//                    return ModBlockEntityWithoutLevelRenderer.instance;
+                    return customRenderer;
                 }
             }, ModItems.TRIBAL_SHIELD.get(), ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
 

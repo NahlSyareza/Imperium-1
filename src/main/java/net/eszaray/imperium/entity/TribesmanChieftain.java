@@ -7,8 +7,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 
-public class Chieftain extends Tribesman {
-    public Chieftain(EntityType<? extends PathfinderMob> entityType, Level level) {
+public class TribesmanChieftain extends Tribesman {
+    public TribesmanChieftain(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
 

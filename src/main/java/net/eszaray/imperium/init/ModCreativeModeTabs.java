@@ -14,13 +14,17 @@ public class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Imperium.MODID);
 
     public static final Supplier<CreativeModeTab> MOD_TAB = TABS.register("modtab", () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.IRON_LEGION_SWORD.get())).title(Component.translatable("creative_tab.modtab")).displayItems((itemDisplayParameters, output) -> {
+        output.accept(ModItems.EAGLE_STANDARD);
+
         output.accept(ModItems.IRON_LEGION_SWORD);
         output.accept(ModItems.IRON_LEGION_SPEAR);
         output.accept(ModItems.CEREMONIAL_LEGION_SWORD);
         output.accept(ModItems.LEGION_BOW);
+        output.accept(ModItems.IRON_TRIBAL_SWORD);
 
         output.accept(ModItems.LEGION_SHIELD);
         output.accept(ModItems.LEGION_ROUND_SHIELD);
+        output.accept(ModItems.TRIBAL_SHIELD);
 
         output.accept(ModItems.IRON_LEGION_HELMET);
         output.accept(ModItems.IRON_LEGION_SEGMENTPLATE);

@@ -51,4 +51,9 @@ public class VeteranLegionary extends Legionary {
         this.setItemSlot(EquipmentSlot.LEGS, legs);
         this.setItemSlot(EquipmentSlot.FEET, feet);
     }
+
+    @Override
+    public Component getName() {
+        return Component.translatable("entity.imperium.veteran_legionary");
+    }
 }

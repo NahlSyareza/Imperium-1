@@ -2,9 +2,7 @@ package net.eszaray.imperium.entity.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.eszaray.imperium.Imperium;
-import net.eszaray.imperium.entity.Chieftain;
-import net.eszaray.imperium.entity.Chieftain;
-import net.eszaray.imperium.entity.NobleCitizen;
+import net.eszaray.imperium.entity.TribesmanChieftain;
 import net.minecraft.client.model.HumanoidArmorModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
@@ -22,32 +20,32 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
-public class ChieftainRenderer extends LivingEntityRenderer<Chieftain, PlayerModel<Chieftain>> {
-    public ChieftainRenderer(EntityRendererProvider.Context context, boolean useSlimModel) {
+public class TribesmanChieftainRenderer extends LivingEntityRenderer<TribesmanChieftain, PlayerModel<TribesmanChieftain>> {
+    public TribesmanChieftainRenderer(EntityRendererProvider.Context context, boolean useSlimModel) {
         super(context, new PlayerModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM : ModelLayers.PLAYER), useSlimModel), 0.5F);
         this.addLayer(new HumanoidArmorLayer<>(this, new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_INNER_ARMOR : ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_OUTER_ARMOR : ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
         this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
     }
 
     @Override
-    public ResourceLocation getTextureLocation(Chieftain chieftain) {
+    public ResourceLocation getTextureLocation(TribesmanChieftain chieftain) {
         return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/chieftain.png");
     }
 
     @Override
-    public void render(Chieftain entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(TribesmanChieftain entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.scale(0.9375F, 0.9375F, 0.9375F);
         setModelProperties(entity);
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
     @Override
-    protected boolean shouldShowName(Chieftain entity) {
+    protected boolean shouldShowName(TribesmanChieftain entity) {
         return false;
     }
 
-    private void setModelProperties(Chieftain entity) {
-        PlayerModel<Chieftain> playermodel = (PlayerModel) this.getModel();
+    private void setModelProperties(TribesmanChieftain entity) {
+        PlayerModel<TribesmanChieftain> playermodel = this.getModel();
         if (entity.isSpectator()) {
             playermodel.setAllVisible(false);
             playermodel.head.visible = true;
@@ -72,7 +70,7 @@ public class ChieftainRenderer extends LivingEntityRenderer<Chieftain, PlayerMod
 
     }
 
-    private static HumanoidModel.ArmPose getArmPose(Chieftain entity, InteractionHand hand) {
+    private static HumanoidModel.ArmPose getArmPose(TribesmanChieftain entity, InteractionHand hand) {
         ItemStack itemstack = entity.getItemInHand(hand);
         if (itemstack.isEmpty()) {
             return HumanoidModel.ArmPose.EMPTY;
