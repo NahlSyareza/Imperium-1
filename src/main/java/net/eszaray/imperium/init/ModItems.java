@@ -8,6 +8,7 @@ import net.eszaray.imperium.item.LegionSwordItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.bus.api.IEventBus;
@@ -25,9 +26,9 @@ public class ModItems {
     public static final DeferredItem<Item> COLORABLE_BAG = ITEMS.register("colorable_bag", () -> new Item(new Item.Properties().setId(createKey("colorable_bag"))));
     public static final DeferredItem<Item> EAGLE_STANDARD = ITEMS.register("eagle_standard", () -> new EagleStandardItem(new Item.Properties().durability(150).setId(createKey("eagle_standard"))));
 
-    public static final DeferredItem<Item> LEGION_SHIELD = ITEMS.register("legion_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("legion_shield"))));
-    public static final DeferredItem<Item> LEGION_ROUND_SHIELD = ITEMS.register("legion_round_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("legion_round_shield"))));
-    public static final DeferredItem<Item> TRIBAL_SHIELD = ITEMS.register("tribal_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("tribal_shield"))));
+    public static final DeferredItem<Item> LEGION_SHIELD = ITEMS.register("legion_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("legion_shield")).equippableUnswappable(EquipmentSlot.OFFHAND)));
+    public static final DeferredItem<Item> LEGION_ROUND_SHIELD = ITEMS.register("legion_round_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("legion_round_shield")).equippableUnswappable(EquipmentSlot.OFFHAND)));
+    public static final DeferredItem<Item> TRIBAL_SHIELD = ITEMS.register("tribal_shield", () -> new LegionShieldItem(new Item.Properties().durability(504).setId(createKey("tribal_shield")).equippableUnswappable(EquipmentSlot.OFFHAND)));
 
     public static final DeferredItem<Item> LEGION_BOW = ITEMS.register("legion_bow", () -> new BowItem(new Item.Properties().setId(createKey("legion_bow"))));
 

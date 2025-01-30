@@ -105,7 +105,7 @@ public class Imperium {
                 public int getDefaultDyeColor(ItemStack stack) {
                     return ARGB.opaque(DyedItemColor.LEATHER_COLOR);
                 }
-            }, Items.LEATHER_CHESTPLATE, ModItems.IRON_LEGION_CHAINMAIL.get(), ModItems.CEREMONIAL_LEGION_GREAVES.get());
+            }, ModItems.CEREMONIAL_LEGION_GREAVES.get());
         }
     }
 }
