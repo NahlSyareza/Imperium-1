@@ -5,12 +5,14 @@ import net.eszaray.imperium.entity.client.model.SimpleArmorModel;
 import net.eszaray.imperium.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.item.equipment.EquipmentModel;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -26,7 +28,7 @@ public class ModCustomArmorModel {
     public static void onRegisterClientExtension(RegisterClientExtensionsEvent event) {
         event.registerItem(new IClientItemExtensions() {
             @Override
-            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+            public Model getHumanoidArmorModel(ItemStack itemStack, EquipmentModel.LayerType layerType, Model original) {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
 
                 Map<String, ModelPart> map = Map.ofEntries(
@@ -47,7 +49,7 @@ public class ModCustomArmorModel {
 
         event.registerItem(new IClientItemExtensions() {
             @Override
-            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+            public Model getHumanoidArmorModel(ItemStack itemStack, EquipmentModel.LayerType layerType, Model original) {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
@@ -67,7 +69,7 @@ public class ModCustomArmorModel {
 
         event.registerItem(new IClientItemExtensions() {
             @Override
-            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+            public Model getHumanoidArmorModel(ItemStack itemStack, EquipmentModel.LayerType layerType, Model original) {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
@@ -87,7 +89,7 @@ public class ModCustomArmorModel {
 
         event.registerItem(new IClientItemExtensions() {
             @Override
-            public HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+            public Model getHumanoidArmorModel(ItemStack itemStack, EquipmentModel.LayerType layerType, Model original) {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),

@@ -54,7 +54,7 @@ public class NobleCitizen extends PathfinderMob {
 
         if (!level.isClientSide()) {
             String dialog = dialogEvent.get(sequence) != null ? dialogEvent.get(sequence).getDialog() : "You shouldn't be here....";
-            player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + dialog));
+//            player.sendSystemMessage(Component.literal("<" + getName().getString() + "> " + dialog));
 
             sequence++;
 

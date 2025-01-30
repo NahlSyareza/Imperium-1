@@ -11,28 +11,28 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.resources.ResourceLocation;
 
-public class NobleCitizenRenderer extends LivingEntityRenderer<NobleCitizen, PlayerModel<NobleCitizen>> {
+public class NobleCitizenRenderer extends LivingEntityRenderer<NobleCitizen, PlayerRenderState, PlayerModel> {
     public NobleCitizenRenderer(EntityRendererProvider.Context context, boolean useSlimModel) {
-        super(context, new PlayerModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM : ModelLayers.PLAYER), useSlimModel), 0.5F);
-        this.addLayer(new HumanoidArmorLayer<>(this, new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_INNER_ARMOR : ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_OUTER_ARMOR : ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
-        this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
+        super(context, new PlayerModel(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM : ModelLayers.PLAYER), useSlimModel), 0.5F);
+        this.addLayer(new HumanoidArmorLayer<>(this, new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_INNER_ARMOR : ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidArmorModel<>(context.bakeLayer(useSlimModel ? ModelLayers.PLAYER_SLIM_OUTER_ARMOR : ModelLayers.PLAYER_OUTER_ARMOR)), context.getEquipmentRenderer()));
+        this.addLayer(new ItemInHandLayer<>(this, context.getItemRenderer()));
     }
 
     @Override
-    public ResourceLocation getTextureLocation(NobleCitizen nobleCitizen) {
+    protected void scale(PlayerRenderState renderState, PoseStack poseStack) {
+        poseStack.scale(0.9375F, 0.9375F, 0.9375F);
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(PlayerRenderState playerRenderState) {
         return ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "textures/entity/noble_citizen.png");
     }
 
     @Override
-    public void render(NobleCitizen entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        poseStack.scale(0.9375F, 0.9375F, 0.9375F);
-        super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
-    }
-
-    @Override
-    protected boolean shouldShowName(NobleCitizen entity) {
-        return false;
+    public PlayerRenderState createRenderState() {
+        return new PlayerRenderState();
     }
 }

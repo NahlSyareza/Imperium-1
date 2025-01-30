@@ -35,7 +35,7 @@ public class Tribesman extends PathfinderMob implements Gallic {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25F, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 1.25F, 32.0F));
         this.targetSelector.addGoal(4, (new HurtByTargetGoal(this)).setAlertOthers(Gallic.class));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, false, false, (entity) -> {
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, false, false, (entity, serverLevel) -> {
             return entity instanceof Roman || entity instanceof Player;
         }));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0F));
@@ -49,11 +49,11 @@ public class Tribesman extends PathfinderMob implements Gallic {
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, EntitySpawnReason spawnReason, @Nullable SpawnGroupData spawnGroupData) {
         RandomSource randomSource = level.getRandom();
         this.populateDefaultEquipmentSlots(randomSource, difficulty);
 
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        return super.finalizeSpawn(level, difficulty, spawnReason, spawnGroupData);
     }
 
     @Override

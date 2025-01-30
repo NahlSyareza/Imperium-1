@@ -23,7 +23,7 @@ public class TribalShieldModel extends Model {
     private final ModelPart root;
 
     public TribalShieldModel(ModelPart root) {
-        super(RenderType::entitySolid);
+        super(root, RenderType::entitySolid);
         this.root = root;
         this.plate = root.getChild("plate");
         this.handle = root.getChild("handle");
@@ -45,11 +45,5 @@ public class TribalShieldModel extends Model {
 
     public ModelPart plate() {
         return plate;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int i1, int i2) {
-        this.plate.render(poseStack, vertexConsumer, i, i1, i2);
-        this.handle.render(poseStack, vertexConsumer, i, i1, i2);
     }
 }

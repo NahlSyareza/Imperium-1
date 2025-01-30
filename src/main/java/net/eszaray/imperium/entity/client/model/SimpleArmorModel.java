@@ -1,17 +1,15 @@
 package net.eszaray.imperium.entity.client.model;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.eszaray.imperium.Imperium;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.LivingEntity;
 
-public class SimpleArmorModel<T extends LivingEntity> extends HumanoidModel<T> {
+public class SimpleArmorModel<T extends HumanoidRenderState> extends HumanoidModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "simple_armor_model"), "main");
     private final ModelPart head;
     private final ModelPart body;
@@ -84,11 +82,5 @@ public class SimpleArmorModel<T extends LivingEntity> extends HumanoidModel<T> {
 
     public ModelPart rightLeg() {
         return rightLeg;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-//        super.renderToBuffer(poseStack, buffer, packedLight, packedOverlay, color);
-        this.root.render(poseStack, buffer, packedLight, packedOverlay, color);
     }
 }

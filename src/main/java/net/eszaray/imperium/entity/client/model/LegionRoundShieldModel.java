@@ -24,7 +24,7 @@ public class LegionRoundShieldModel extends Model {
     private final ModelPart handle;
 
     public LegionRoundShieldModel(ModelPart root) {
-        super(RenderType::entitySolid);
+        super(root, RenderType::entitySolid);
         this.root = root;
         this.plate = root.getChild("plate");
         this.handle = root.getChild("handle");
@@ -46,12 +46,5 @@ public class LegionRoundShieldModel extends Model {
 
     public ModelPart handle() {
         return this.handle;
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int i, int i1, int i2) {
-//        this.root.render(poseStack, vertexConsumer, i, i1, i2);
-        this.plate.render(poseStack, vertexConsumer, i, i1, i2);
-        this.handle.render(poseStack, vertexConsumer, i, i1, i2);
     }
 }

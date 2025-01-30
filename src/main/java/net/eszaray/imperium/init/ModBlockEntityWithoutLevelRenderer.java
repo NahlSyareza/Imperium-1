@@ -48,11 +48,11 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
             posestack.scale(1.0F, -1.0F, -1.0F);
             Material base = ModModelBakery.LEGION_SHIELD_BASE;
             Material overlay = ModModelBakery.BASE;
-            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
+            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBuffer(buffer, this.legionShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
             this.legionShieldModel.handle().render(posestack, vertexconsumer, packedLight, packedOverlay);
 
-            this.legionShieldModel.plate().render(posestack, overlay.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
-            this.legionShieldModel.plate().render(posestack, base.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
+            this.legionShieldModel.plate().render(posestack, overlay.buffer(buffer, RenderType::entitySolid, false, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
+            this.legionShieldModel.plate().render(posestack, base.buffer(buffer, RenderType::entityCutout, false, stack.hasFoil()), packedLight, packedOverlay);
 
             posestack.popPose();
         } else if (stack.is(ModItems.LEGION_ROUND_SHIELD)) {
@@ -60,11 +60,11 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
             posestack.scale(1.0F, -1.0F, -1.0F);
             Material base = ModModelBakery.LEGION_ROUND_SHIELD_BASE;
             Material overlay = ModModelBakery.ROUND_BASE;
-            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.legionRoundShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
+            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBuffer(buffer, this.legionRoundShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
             this.legionRoundShieldModel.handle().render(posestack, vertexconsumer, packedLight, packedOverlay);
 
-            this.legionRoundShieldModel.plate().render(posestack, overlay.buffer(buffer, RenderType::entitySolid, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
-            this.legionRoundShieldModel.plate().render(posestack, base.buffer(buffer, RenderType::entityCutout, stack.hasFoil()), packedLight, packedOverlay);
+            this.legionRoundShieldModel.plate().render(posestack, overlay.buffer(buffer, RenderType::entitySolid, false, stack.hasFoil()), packedLight, packedOverlay, DyedItemColor.getOrDefault(stack, DyedItemColor.LEATHER_COLOR));
+            this.legionRoundShieldModel.plate().render(posestack, base.buffer(buffer, RenderType::entityCutout, false, stack.hasFoil()), packedLight, packedOverlay);
 
             posestack.popPose();
         } else if (stack.is(ModItems.TRIBAL_SHIELD)) {
@@ -73,7 +73,7 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
             posestack.pushPose();
             posestack.scale(1.0F, -1.0F, -1.0F);
             Material base = ModModelBakery.TRIBAL_SHIELD_BASE;
-            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(renderBuffers.bufferSource(), this.tribalShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
+            VertexConsumer vertexconsumer = base.sprite().wrap(ItemRenderer.getFoilBuffer(renderBuffers.bufferSource(), this.tribalShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
             this.tribalShieldModel.handle().render(posestack, vertexconsumer, packedLight, packedOverlay);
             this.tribalShieldModel.plate().render(posestack, vertexconsumer, packedLight, packedOverlay);
 

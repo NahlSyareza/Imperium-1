@@ -1,27 +1,17 @@
 package net.eszaray.imperium;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.logging.LogUtils;
-import net.eszaray.imperium.entity.client.model.SimpleArmorModel;
-import net.eszaray.imperium.entity.client.renderer.TribesmanChieftainRenderer;
 import net.eszaray.imperium.entity.client.renderer.LegionaryRenderer;
 import net.eszaray.imperium.entity.client.renderer.NobleCitizenRenderer;
+import net.eszaray.imperium.entity.client.renderer.TribesmanChieftainRenderer;
 import net.eszaray.imperium.entity.client.renderer.TribesmanRenderer;
 import net.eszaray.imperium.init.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.util.FastColor;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -40,9 +30,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
-
-import java.util.Collections;
-import java.util.Map;
 
 @Mod(Imperium.MODID)
 public class Imperium {
@@ -119,9 +106,9 @@ public class Imperium {
             event.registerItem(new IClientItemExtensions() {
                 @Override
                 public int getDefaultDyeColor(ItemStack stack) {
-                    return FastColor.ARGB32.opaque(DyedItemColor.LEATHER_COLOR);
+                    return ARGB.opaque(DyedItemColor.LEATHER_COLOR);
                 }
-            }, ModItems.CEREMONIAL_LEGION_GREAVES.get());
+            }, Items.LEATHER_CHESTPLATE, ModItems.IRON_LEGION_CHAINMAIL.get(), ModItems.CEREMONIAL_LEGION_GREAVES.get());
         }
     }
 }

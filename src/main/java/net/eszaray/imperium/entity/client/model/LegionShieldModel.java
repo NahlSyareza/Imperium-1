@@ -22,7 +22,7 @@ public class LegionShieldModel extends Model {
     private final ModelPart handle;
 
     public LegionShieldModel(ModelPart root) {
-        super(RenderType::entitySolid);
+        super(root, RenderType::entitySolid);
         this.root = root;
         this.plate = root.getChild("plate");
         this.handle = root.getChild("handle");
@@ -44,9 +44,5 @@ public class LegionShieldModel extends Model {
         partdefinition.addOrReplaceChild("handle", CubeListBuilder.create().texOffs(30, 0).addBox(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.5708F));
 
         return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, int color) {
-        this.root.render(poseStack, buffer, packedLight, packedOverlay, color);
     }
 }

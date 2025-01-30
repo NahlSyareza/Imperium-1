@@ -3,13 +3,9 @@ package net.eszaray.imperium.item;
 import net.eszaray.imperium.Imperium;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlotGroup;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -18,19 +14,12 @@ import net.neoforged.neoforge.common.ItemAbility;
 public class LegionSwordItem extends SwordItem {
     public static final ResourceLocation BASE_ATTACK_REACH_ID = ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "base_attack_reach");
 
-    public LegionSwordItem(Tier tier, Properties properties) {
-        super(tier, properties);
+    public LegionSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties) {
+        super(material, attackDamage, attackSpeed, properties);
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier tier, int attackDamage) {
-        return createAttributes(tier, (float) attackDamage);
-    }
-
-    public static ItemAttributeModifiers createAttributes(Tier tier, float attackDamage) {
-        return ItemAttributeModifiers.builder()
-                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, (double) (attackDamage + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, (double) -1.8F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(BASE_ATTACK_REACH_ID, (double) (-1), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
+    public LegionSwordItem(Properties properties) {
+        super(properties);
     }
 
     @Override

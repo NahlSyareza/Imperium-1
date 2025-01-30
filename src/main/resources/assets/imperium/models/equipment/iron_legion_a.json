@@ -1,0 +1,26 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "imperium:iron_legion_a",
+        "dyeable": {
+          "color_when_undyed": -6265536
+        }
+      },
+      {
+        "texture": "imperium:iron_legion_a_overlay"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "imperium:iron_legion_a",
+        "dyeable": {
+          "color_when_undyed": -6265536
+        }
+      },
+      {
+        "texture": "imperium:iron_legion_a_overlay"
+      }
+    ]
+  }
+}

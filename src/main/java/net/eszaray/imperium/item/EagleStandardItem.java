@@ -5,7 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -37,14 +37,15 @@ public class EagleStandardItem extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
+
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public InteractionResult use(Level level, Player player, InteractionHand usedHand) {
         ItemStack stack = player.getItemInHand(usedHand);
         player.startUsingItem(usedHand);
 
         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 5 * 20, 2));
         stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(usedHand));
 
-        return InteractionResultHolder.success(stack);
+        return InteractionResult.SUCCESS;
     }
 }
