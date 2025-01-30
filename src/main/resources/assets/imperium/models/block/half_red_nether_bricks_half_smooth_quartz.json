@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"particle": "rome:block/half_red_nether_bricks_half_smooth_quartz",
+		"north": "rome:block/half_red_nether_bricks_half_smooth_quartz",
+		"south": "rome:block/half_red_nether_bricks_half_smooth_quartz",
+		"east": "rome:block/half_red_nether_bricks_half_smooth_quartz",
+		"west": "rome:block/half_red_nether_bricks_half_smooth_quartz",
+		"up": "minecraft:block/red_nether_bricks",
+		"down": "minecraft:block/quartz_block_bottom"
+	}
+}

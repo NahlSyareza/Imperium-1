@@ -1,0 +1,30 @@
+{
+  "parent": "imperium:item/handheld_32",
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "imperium:item/handheld_32",
+    "textures": {
+      "layer0": "imperium:item/iron_legion_spear_in_hand"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/handheld",
+      "textures": {
+        "layer0": "imperium:item/iron_legion_spear"
+      }
+    },
+    "ground": {
+      "parent": "item/handheld",
+      "textures": {
+        "layer0": "imperium:item/iron_legion_spear"
+      }
+    },
+    "fixed": {
+      "parent": "item/handheld",
+      "textures": {
+        "layer0": "imperium:item/iron_legion_spear"
+      }
+    }
+  }
+}

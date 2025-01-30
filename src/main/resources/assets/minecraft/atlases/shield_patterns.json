@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_round_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield/round_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/legion_shield/base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/tribal_shield_base"
+    }
+  ]
+}

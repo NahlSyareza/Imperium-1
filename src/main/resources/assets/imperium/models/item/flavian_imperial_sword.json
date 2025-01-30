@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "imperium:item/flavian_imperial_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "imperium:item/flavian_imperial_sword_blocking"
+    }
+  ]
+}

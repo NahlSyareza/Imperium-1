@@ -1,0 +1,23 @@
+{
+  "parent": "item/shield",
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [0, 90, 90],
+      "translation": [10, 6, 12],
+      "scale": [1, 1, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [0, 90, 90],
+      "translation": [10, -10, 12],
+      "scale": [1, 1, 1]
+    }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "imperium:item/legion_shield_blocking"
+    }
+  ]
+}

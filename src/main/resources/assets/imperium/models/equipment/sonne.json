@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "imperium:sonne"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "imperium:sonne"
+      }
+    ]
+  }
+}

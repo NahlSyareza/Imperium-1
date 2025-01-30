@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "dyeable": {
+          "color_when_undyed": -6265536
+        },
+        "texture": "imperium:iron_legion_b"
+      },
+      {
+        "texture": "imperium:iron_legion_b_overlay"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "imperium:item/handheld_blocking",
+  "textures": {
+    "layer0": "imperium:item/ceremonial_legion_sword"
+  }
+}

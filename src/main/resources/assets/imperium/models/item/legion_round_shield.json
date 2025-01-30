@@ -1,0 +1,11 @@
+{
+  "parent": "item/shield",
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "imperium:item/legion_round_shield_blocking"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "imperium:item/ceremonial_legion_chestplate"
+  }
+}
