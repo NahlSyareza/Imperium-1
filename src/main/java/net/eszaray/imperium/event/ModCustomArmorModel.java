@@ -8,6 +8,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -33,7 +34,7 @@ public class ModCustomArmorModel {
 
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).head()),
-                        Map.entry("hat",  new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).hat()),
+//                        Map.entry("hat",  new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).hat()),
                         Map.entry("body", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
@@ -41,9 +42,9 @@ public class ModCustomArmorModel {
                         Map.entry("left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()))
                 );
 
-                SimpleArmorModel armorModel = new SimpleArmorModel(new ModelPart(Collections.emptyList(), map));
+                SimpleArmorModel model = new SimpleArmorModel(new ModelPart(Collections.emptyList(), map));
 
-                return armorModel;
+                return model;
             }
         }, ModItems.SONNE_HELMET.get());
 
@@ -53,7 +54,7 @@ public class ModCustomArmorModel {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
-                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
+//                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("body", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).body()),
                         Map.entry("right_arm", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).rightArm()),
                         Map.entry("left_arm", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).leftArm()),
@@ -73,8 +74,8 @@ public class ModCustomArmorModel {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
-                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
-                        Map.entry("body",  new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).body()),
+//                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
+                        Map.entry("body", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).body()),
                         Map.entry("right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("right_leg", new SimpleArmorModel<>(modelSet.bakeLayer(SimpleArmorModel.LAYER_LOCATION)).rightLeg()),
@@ -93,7 +94,7 @@ public class ModCustomArmorModel {
                 EntityModelSet modelSet = Minecraft.getInstance().getEntityModels();
                 Map<String, ModelPart> map = Map.ofEntries(
                         Map.entry("head", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
-                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
+//                        Map.entry("hat", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("body", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),
                         Map.entry("left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap())),

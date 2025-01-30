@@ -3,8 +3,7 @@ package net.eszaray.imperium.init;
 import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.item.EagleStandardItem;
 import net.eszaray.imperium.item.LegionShieldItem;
-import net.eszaray.imperium.item.LegionSpearItem;
-import net.eszaray.imperium.item.LegionSwordItem;
+import net.eszaray.imperium.item.ReachableSwordItem;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -18,10 +17,10 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Imperium.MODID);
 
-    public static final DeferredItem<Item> IRON_LEGION_SWORD = ITEMS.register("iron_legion_sword", () -> new LegionSwordItem(ModTiers.IRON_LEGION, 4.0F, -1.8F, new Item.Properties().setId(createKey("iron_legion_sword"))));
+    public static final DeferredItem<Item> IRON_LEGION_SWORD = ITEMS.register("iron_legion_sword", () -> new ReachableSwordItem(ModTiers.IRON_LEGION, 4.0F, -1.8F, -1.0F, new Item.Properties().setId(createKey("iron_legion_sword"))));
     public static final DeferredItem<Item> IRON_TRIBAL_SWORD = ITEMS.register("iron_tribal_sword", () -> new SwordItem(ToolMaterial.IRON, 3.0F, -2.4F, new Item.Properties().setId(createKey("iron_tribal_sword"))));
-    public static final DeferredItem<Item> IRON_LEGION_SPEAR = ITEMS.register("iron_legion_spear", () -> new LegionSpearItem(ModTiers.IRON_LEGION, 3.0F, -3.0F, new Item.Properties().setId(createKey("iron_legion_spear"))));
-    public static final DeferredItem<Item> CEREMONIAL_LEGION_SWORD = ITEMS.register("ceremonial_legion_sword", () -> new LegionSwordItem(ModTiers.IRON_LEGION, 4.0F, -1.8F, new Item.Properties().setId(createKey("ceremonial_legion_sword"))));
+    public static final DeferredItem<Item> IRON_LEGION_SPEAR = ITEMS.register("iron_legion_spear", () -> new ReachableSwordItem(ModTiers.IRON_LEGION, 3.0F, -3.0F, 2.0F, new Item.Properties().setId(createKey("iron_legion_spear"))));
+    public static final DeferredItem<Item> CEREMONIAL_LEGION_SWORD = ITEMS.register("ceremonial_legion_sword", () -> new ReachableSwordItem(ModTiers.IRON_LEGION, 4.0F, -1.8F, -1.0F, new Item.Properties().setId(createKey("ceremonial_legion_sword"))));
 
     public static final DeferredItem<Item> COLORABLE_BAG = ITEMS.register("colorable_bag", () -> new Item(new Item.Properties().setId(createKey("colorable_bag"))));
     public static final DeferredItem<Item> EAGLE_STANDARD = ITEMS.register("eagle_standard", () -> new EagleStandardItem(new Item.Properties().durability(150).setId(createKey("eagle_standard"))));
@@ -35,7 +34,7 @@ public class ModItems {
     public static final DeferredItem<Item> IRON_LEGION_HELMET = ITEMS.register("iron_legion_helmet", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorType.HELMET, new Item.Properties().setId(createKey("iron_legion_helmet")).durability(ArmorType.HELMET.getDurability(5))));
     public static final DeferredItem<Item> IRON_LEGION_SEGMENTPLATE = ITEMS.register("iron_legion_segmentplate", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorType.CHESTPLATE, new Item.Properties().setId(createKey("iron_legion_segmentplate")).durability(ArmorType.CHESTPLATE.getDurability(5))));
     public static final DeferredItem<Item> IRON_LEGION_CHAINMAIL = ITEMS.register("iron_legion_chainmail", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_B, ArmorType.CHESTPLATE, new Item.Properties().setId(createKey("iron_legion_chainmail")).durability(ArmorType.CHESTPLATE.getDurability(5))));
-    public static final DeferredItem<Item> IRON_LEGION_GREAVES = ITEMS.register("iron_legion_greaves",  () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorType.LEGGINGS, new Item.Properties().setId(createKey("iron_legion_greaves")).durability(ArmorType.LEGGINGS.getDurability(5))));
+    public static final DeferredItem<Item> IRON_LEGION_GREAVES = ITEMS.register("iron_legion_greaves", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorType.LEGGINGS, new Item.Properties().setId(createKey("iron_legion_greaves")).durability(ArmorType.LEGGINGS.getDurability(5))));
     public static final DeferredItem<Item> IRON_LEGION_BOOTS = ITEMS.register("iron_legion_boots", () -> new ArmorItem(ModArmorMaterials.IRON_LEGION_A, ArmorType.BOOTS, new Item.Properties().setId(createKey("iron_legion_boots")).durability(ArmorType.BOOTS.getDurability(5))));
 
     public static final DeferredItem<Item> CEREMONIAL_LEGION_HELMET = ITEMS.register("ceremonial_legion_helmet", () -> new ArmorItem(ModArmorMaterials.CEREMONIAL_LEGION, ArmorType.HELMET, new Item.Properties().setId(createKey("ceremonial_legion_helmet")).durability(ArmorType.HELMET.getDurability(5))));
