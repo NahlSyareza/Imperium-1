@@ -15,23 +15,24 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 
-public class LegionSwordItem extends SwordItem {
+public class ReachableSwordItem extends SwordItem {
     public static final ResourceLocation BASE_ATTACK_REACH_ID = ResourceLocation.fromNamespaceAndPath(Imperium.MODID, "base_attack_reach");
 
-    public LegionSwordItem(Tier tier, Properties properties) {
+    public ReachableSwordItem(Tier tier, Properties properties) {
         super(tier, properties);
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier tier, int attackDamage) {
-        return createAttributes(tier, (float) attackDamage);
+    public static ItemAttributeModifiers createAttributes(Tier tier, int attackDamage, float attackSpeed, float attackReach) {
+        return createAttributes(tier, (float) attackDamage, attackSpeed, attackReach);
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier tier, float attackDamage) {
+    public static ItemAttributeModifiers createAttributes(Tier tier, float attackDamage, float attackSpeed, float attackReach) {
         return ItemAttributeModifiers.builder()
-                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, (double) (attackDamage + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, (double) -1.8F, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(BASE_ATTACK_REACH_ID, (double) (-1), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
+                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, attackDamage + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, attackSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ENTITY_INTERACTION_RANGE, new AttributeModifier(BASE_ATTACK_REACH_ID, attackReach, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build();
     }
+
 
     @Override
     public boolean supportsEnchantment(ItemStack stack, Holder<Enchantment> enchantment) {

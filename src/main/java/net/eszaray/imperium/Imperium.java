@@ -95,7 +95,6 @@ public class Imperium {
         @SubscribeEvent
         public static void onRegisterReloadListener(RegisterClientReloadListenersEvent event) {
             customRenderer = new ModBlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
-//            ModBlockEntityWithoutLevelRenderer.instance = new ModBlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
             event.registerReloadListener(customRenderer);
         }
 
@@ -111,7 +110,6 @@ public class Imperium {
             event.registerItem(new IClientItemExtensions() {
                 @Override
                 public BlockEntityWithoutLevelRenderer getCustomRenderer() {
-//                    return ModBlockEntityWithoutLevelRenderer.instance;
                     return customRenderer;
                 }
             }, ModItems.TRIBAL_SHIELD.get(), ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());

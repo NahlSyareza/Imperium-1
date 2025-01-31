@@ -30,8 +30,8 @@ public class EliteLegionary extends Legionary{
         ItemStack sword = new ItemStack(ModItems.IRON_LEGION_SWORD.get());
         ItemStack shield = new ItemStack(ModItems.LEGION_SHIELD.get());
 
-        int color = 0x3C44AA;
-//        int color = 0xB02E26;
+//        int color = 0x3C44AA;
+        int color = 0x640000;
 
         shield.set(DataComponents.DYED_COLOR, new DyedItemColor(color, true));
 

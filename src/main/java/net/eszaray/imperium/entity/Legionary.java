@@ -22,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Enemy;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -43,8 +44,8 @@ public class Legionary extends PathfinderMob implements Roman {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25F, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 1.25F, 32.0F));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, false, false, (entity) -> {
-            return entity instanceof Enemy && !(entity instanceof Creeper) && !(entity instanceof EnderMan) && !(entity instanceof Piglin) || entity instanceof Gallic;
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, true, false, (entity) -> {
+            return entity instanceof Enemy && !(entity instanceof Slime) && !(entity instanceof Creeper) && !(entity instanceof EnderMan) && !(entity instanceof Piglin) || entity instanceof Gallic;
         }));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0F));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));

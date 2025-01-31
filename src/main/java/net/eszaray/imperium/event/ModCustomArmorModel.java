@@ -45,14 +45,14 @@ public class ModCustomArmorModel {
                 return armorModel;
             }
 
-            @Override
-            public void setupModelAnimations(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, Model model, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-                if(model instanceof SimpleArmorModel<?>) {
-                    SimpleArmorModel model1 = (SimpleArmorModel) model;
-                    model1.head().xRot = 10.0F;
-                    Imperium.LOGGER.info("Here");
-                }
-            }
+//            @Override
+//            public void setupModelAnimations(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, Model model, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+//                if(model instanceof SimpleArmorModel<?>) {
+//                    SimpleArmorModel model1 = (SimpleArmorModel) model;
+//                    model1.head().xRot = 10.0F;
+//                    Imperium.LOGGER.info("Here");
+//                }
+//            }
         }, ModItems.SONNE_HELMET.get());
 
         event.registerItem(new IClientItemExtensions() {

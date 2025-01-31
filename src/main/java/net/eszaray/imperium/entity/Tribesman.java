@@ -35,9 +35,10 @@ public class Tribesman extends PathfinderMob implements Gallic {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.25F, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 1.25F, 32.0F));
         this.targetSelector.addGoal(4, (new HurtByTargetGoal(this)).setAlertOthers(Gallic.class));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, false, false, (entity) -> {
-            return entity instanceof Roman || entity instanceof Player;
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Mob.class, 5, true, false, (entity) -> {
+            return entity instanceof Roman;
         }));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0F));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));

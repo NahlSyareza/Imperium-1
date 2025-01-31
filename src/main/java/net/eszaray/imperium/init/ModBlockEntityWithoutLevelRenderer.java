@@ -25,7 +25,6 @@ BIG THANKS TO Rajhab ON CURSEFORGE
  */
 
 public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelRenderer {
-    public static ModBlockEntityWithoutLevelRenderer instance;
     private LegionShieldModel legionShieldModel;
     private LegionRoundShieldModel legionRoundShieldModel;
     private TribalShieldModel tribalShieldModel;
