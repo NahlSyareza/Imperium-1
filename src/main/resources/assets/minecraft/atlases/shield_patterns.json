@@ -19,6 +19,10 @@
     {
       "type": "single",
       "resource": "imperium:entity/tribal_shield_base"
+    },
+    {
+      "type": "single",
+      "resource": "imperium:entity/tribal_ornate_shield_base"
     }
   ]
 }

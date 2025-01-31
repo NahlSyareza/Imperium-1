@@ -23,6 +23,7 @@ public class ModItems {
     public static final DeferredItem<Item> LEGION_SHIELD = ITEMS.register("legion_shield", () -> new LegionShieldItem(new Item.Properties().durability(504)));
     public static final DeferredItem<Item> LEGION_ROUND_SHIELD = ITEMS.register("legion_round_shield", () -> new LegionShieldItem(new Item.Properties().durability(504)));
     public static final DeferredItem<Item> TRIBAL_SHIELD = ITEMS.register("tribal_shield", () -> new LegionShieldItem(new Item.Properties().durability(504)));
+    public static final DeferredItem<Item> TRIBAL_ORNATE_SHIELD = ITEMS.register("tribal_ornate_shield", () -> new ShieldItem(new Item.Properties().durability(504)));
 
     public static final DeferredItem<Item> LEGION_BOW = ITEMS.register("legion_bow", () -> new BowItem(new Item.Properties()));
 

@@ -2,10 +2,7 @@ package net.eszaray.imperium.event;
 
 import net.eszaray.imperium.Imperium;
 import net.eszaray.imperium.entity.*;
-import net.eszaray.imperium.entity.client.model.LegionRoundShieldModel;
-import net.eszaray.imperium.entity.client.model.LegionShieldModel;
-import net.eszaray.imperium.entity.client.model.SimpleArmorModel;
-import net.eszaray.imperium.entity.client.model.TribalShieldModel;
+import net.eszaray.imperium.entity.client.model.*;
 import net.eszaray.imperium.init.ModEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -21,6 +18,7 @@ public class ModBusEvents {
         event.registerLayerDefinition(LegionRoundShieldModel.LAYER_LOCATION, LegionRoundShieldModel::createLayer);
         event.registerLayerDefinition(TribalShieldModel.LAYER_LOCATION, TribalShieldModel::createLayer);
         event.registerLayerDefinition(SimpleArmorModel.LAYER_LOCATION, SimpleArmorModel::createLayer);
+        event.registerLayerDefinition(TribalOrnateShieldModel.LAYER_LOCATION, TribalOrnateShieldModel::createLayer);
     }
 
     @SubscribeEvent

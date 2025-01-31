@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.eszaray.imperium.entity.client.model.LegionRoundShieldModel;
 import net.eszaray.imperium.entity.client.model.LegionShieldModel;
+import net.eszaray.imperium.entity.client.model.TribalOrnateShieldModel;
 import net.eszaray.imperium.entity.client.model.TribalShieldModel;
 import net.eszaray.imperium.util.ModModelBakery;
 import net.minecraft.client.Minecraft;
@@ -28,6 +29,7 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
     private LegionShieldModel legionShieldModel;
     private LegionRoundShieldModel legionRoundShieldModel;
     private TribalShieldModel tribalShieldModel;
+    private TribalOrnateShieldModel tribalOrnateShieldModel;
     private final EntityModelSet entityModelSet;
 
     public ModBlockEntityWithoutLevelRenderer(BlockEntityRenderDispatcher p_172550_, EntityModelSet p_172551_) {
@@ -39,6 +41,7 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
         this.legionShieldModel = new LegionShieldModel(this.entityModelSet.bakeLayer(LegionShieldModel.LAYER_LOCATION));
         this.legionRoundShieldModel = new LegionRoundShieldModel(this.entityModelSet.bakeLayer(LegionRoundShieldModel.LAYER_LOCATION));
         this.tribalShieldModel = new TribalShieldModel(this.entityModelSet.bakeLayer(TribalShieldModel.LAYER_LOCATION));
+        this.tribalOrnateShieldModel = new TribalOrnateShieldModel(this.entityModelSet.bakeLayer(TribalOrnateShieldModel.LAYER_LOCATION));
     }
 
     public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack posestack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
@@ -76,6 +79,14 @@ public class ModBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLevelR
             this.tribalShieldModel.handle().render(posestack, vertexconsumer, packedLight, packedOverlay);
             this.tribalShieldModel.plate().render(posestack, vertexconsumer, packedLight, packedOverlay);
 
+            posestack.popPose();
+        } else if (stack.is(ModItems.TRIBAL_ORNATE_SHIELD.get())) {
+            posestack.pushPose();
+            posestack.scale(1.0F, -1.0F, -1.0F);
+            Material base = ModModelBakery.TRIBAL_ORNATE_SHIELD_BASE;
+            VertexConsumer vertexConsumer = base.sprite().wrap(ItemRenderer.getFoilBufferDirect(buffer, this.tribalOrnateShieldModel.renderType(base.atlasLocation()), true, stack.hasFoil()));
+            this.tribalOrnateShieldModel.handle().render(posestack, vertexConsumer, packedLight, packedOverlay);
+            this.tribalOrnateShieldModel.plate().render(posestack, vertexConsumer, packedLight, packedOverlay);
             posestack.popPose();
         }
     }

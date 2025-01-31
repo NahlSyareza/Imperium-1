@@ -112,7 +112,7 @@ public class Imperium {
                 public BlockEntityWithoutLevelRenderer getCustomRenderer() {
                     return customRenderer;
                 }
-            }, ModItems.TRIBAL_SHIELD.get(), ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
+            }, ModItems.TRIBAL_ORNATE_SHIELD.get(), ModItems.TRIBAL_SHIELD.get(), ModItems.LEGION_SHIELD.get(), ModItems.LEGION_ROUND_SHIELD.get());
 
             event.registerItem(new IClientItemExtensions() {
                 @Override
